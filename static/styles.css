@@ -1,3 +1,5 @@
+/* styles.css */
+
 /* Reset basic elements */
 * {
     margin: 0;
@@ -7,62 +9,219 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    background: linear-gradient(to right, #f8f9fa, #e9ecef); /* Subtle gradient */
     color: #343a40;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    line-height: 1.6; /* Improved readability */
 }
 
 header {
-    background-color: #0d6efd;
+    background-color: #0d6efd; /* Bootstrap primary blue */
     color: white;
-    padding: 1.5rem;
+    padding: 1.5rem 1rem; /* Adjusted padding */
     text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+header h1 {
+    margin: 0;
+    font-size: 1.8rem; /* Example size */
+    margin-bottom: 0.75rem; /* Space below title */
+}
+
+
 nav {
     background-color: white;
-    padding: 1rem;
+    padding: 0.75rem 1rem; /* Slightly less padding */
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 1.5rem; /* Adjusted gap */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Softer shadow */
+    border-bottom: 1px solid #dee2e6; /* Light border */
 }
 
 nav a {
     text-decoration: none;
     color: #0d6efd;
-    font-weight: bold;
-    transition: color 0.3s;
+    font-weight: 600; /* Slightly bolder */
+    font-size: 1rem; /* Slightly smaller */
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px; /* Subtle rounding */
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease; /* Added background transition */
 }
 
 nav a:hover {
-    color: #0056b3;
+    color: #0056b3; /* Darker blue on hover */
+    background-color: #e9ecef; /* Light background on hover */
+    transform: translateY(-1px); /* Slight lift on hover */
 }
 
 main {
     flex: 1;
-    padding: 2rem;
+    padding: 1.5rem 1rem; /* Adjusted padding */
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 1400px; /* Wider max width for table */
+    margin: 0 auto; /* Center content */
 }
 
-main img {
+/* Styles for Home Page */
+.hero {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-around;
+    background-color: white; padding: 2.5rem 2rem; border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 2rem;
+    width: 100%; gap: 1.5rem;
+}
+.hero-content { flex: 1; min-width: 280px; }
+.hero h2 { font-size: 2.2rem; color: #0d6efd; margin-bottom: 0.75rem; }
+.hero p { font-size: 1.1rem; color: #495057; margin-bottom: 0.5rem; }
+.hero-img {
+    display: block; max-width: 40%; min-width: 250px; height: auto;
+    border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.about-neft {
+    background-color: #ffffff; padding: 1.5rem 2rem; border: 1px solid #dee2e6;
+    border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    width: 100%;
+    max-width: 1100px; /* Limit width of about section */
+}
+.about-neft h2 { text-align: center; margin-bottom: 1rem; color: #0d6efd; font-size: 1.6rem; }
+.about-neft p { margin-bottom: 1rem; line-height: 1.7; color: #495057; text-align: justify; }
+.about-neft p:last-child { margin-bottom: 0; }
+
+/* Styles for Graph Features Explanation (if used elsewhere) */
+.features-explanation { width: 100%; margin-bottom: 2rem; }
+.features-explanation h2 { text-align: center; margin-bottom: 1.5rem; color: #0d6efd; font-size: 1.8rem; }
+.features { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; width: 100%; }
+.feature-card { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; flex-basis: 280px; flex-grow: 1; max-width: calc(50% - 0.75rem); }
+.feature-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+.feature-card h3 a { color: #0056b3; text-decoration: none; margin-bottom: 0.75rem; font-size: 1.3rem; display: block; transition: color 0.2s; }
+.feature-card h3 a:hover { color: #0d6efd; }
+.feature-card p { font-size: 0.95rem; color: #6c757d; }
+
+/* Styles for Data Viewer Sections (Filters & Transactions pages) */
+.data-viewer { width: 100%; padding: 0; }
+.data-viewer h2 { text-align: center; margin-bottom: 1.5rem; color: #0d6efd; font-size: 2rem; }
+/* Removed h3 styling here as it's now specific to graph container */
+.data-viewer p { text-align: center; margin-bottom: 1rem; color: #6c757d;} /* Paragraphs within data viewer */
+.data-viewer p a { color: #0d6efd; text-decoration: none; }
+.data-viewer p a:hover { text-decoration: underline; }
+
+/* Filter Section Styles (on /filters page) */
+.filter-section {
+    background-color: #ffffff;
+    padding: 1.5rem 2rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    width: 100%;
+    max-width: 900px; /* Control max width */
+}
+.standalone-filters { /* Specific styles for filter page container */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.standalone-filters h2 {
+     color: #0d6efd;
+     text-align: center;
+     margin-bottom: 1rem;
+     font-size: 1.8rem; /* Adjusted size */
+}
+.standalone-filters p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #6c757d;
+}
+.filter-form { display: flex; flex-wrap: wrap; gap: 1.5rem 2rem; align-items: flex-end; justify-content: center; }
+.filter-item { display: flex; flex-direction: column; gap: 0.3rem; min-width: 150px; }
+.filter-item label { font-weight: 500; font-size: 0.9rem; color: #495057; }
+.filter-item select, .filter-item input[type="text"], .filter-section button, .filter-section a.button-link { padding: 0.5rem 0.8rem; border: 1px solid #ced4da; border-radius: 4px; font-size: 0.95rem; height: 38px; }
+.filter-item select { background-color: #fff; }
+.filter-actions { display: flex; gap: 1rem; padding-top: 1.25rem; margin-left: auto; /* Push buttons right */ margin-right: auto; }
+.filter-section button, .filter-section a.button-link { background-color: #0d6efd; color: white; cursor: pointer; text-decoration: none; display: inline-block; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-weight: 500; transition: background-color 0.2s ease, transform 0.1s ease; height: 38px; line-height: 1.5; }
+.filter-section button:hover, .filter-section a.button-link:hover { background-color: #0056b3; transform: translateY(-1px); }
+.filter-section button:active, .filter-section a.button-link:active { transform: translateY(0px); }
+.filter-section a.button-link { background-color: #6c757d; }
+.filter-section a.button-link:hover { background-color: #5a6268; }
+
+/* Table Styles (on /transactions page) */
+.table-container { width: 100%; overflow-x: auto; background-color: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-top: 1rem; }
+table { width: 100%; border-collapse: collapse; border: 1px solid #dee2e6; }
+th, td { border: 1px solid #dee2e6; padding: 0.8rem 1rem; text-align: left; vertical-align: middle; font-size: 0.9rem; }
+thead th { background-color: #e9ecef; font-weight: 600; color: #495057; white-space: nowrap; position: sticky; top: 0; z-index: 10; }
+tbody tr:nth-child(even) { background-color: #f8f9fa; }
+tbody tr:hover { background-color: #e2e6ea; }
+/* Align specific columns */
+td:nth-child(2), td:nth-child(3) { text-align: center; white-space: nowrap; } /* Year, Month */
+td:nth-child(4), td:nth-child(6) { text-align: right; } /* Counts */
+td:nth-child(5), td:nth-child(7) { text-align: right; white-space: nowrap; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; } /* Amounts */
+
+/* Styles for Filtered Graph Container (on /transactions page) */
+.filtered-graph-container {
+    width: 100%;
+    max-width: 1000px; /* Adjust max width as needed */
+    margin: 2rem auto; /* Center and add space */
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center; /* Center the image */
+}
+
+.filtered-graph-container h3 {
+    margin-bottom: 1rem;
+    color: #343a40;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.filtered-graph-container img {
     max-width: 100%;
     height: auto;
-    margin-top: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 4px; /* Optional: slightly round corners */
 }
 
-footer {
-    background-color: #f1f1f1;
-    color: #6c757d;
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+
+/* Footer Styles */
+footer { background-color: #343a40; color: #f8f9fa; text-align: center; padding: 1.5rem 1rem; font-size: 0.9rem; margin-top: auto; box-shadow: 0 -2px 4px rgba(0,0,0,0.1); }
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+     main { max-width: 95%; }
+     .filter-form { gap: 1rem; }
+     .hero-img { max-width: 50%; }
+     .feature-card { max-width: calc(50% - 1rem); }
+}
+@media (max-width: 768px) {
+    .filter-form { justify-content: flex-start; }
+    .filter-item { min-width: 120px; }
+    th, td { padding: 0.6rem 0.75rem; }
+    .data-viewer h2 { font-size: 1.8rem; }
+    .filtered-graph-container h3 { font-size: 1.3rem; } /* Adjust graph title size */
+    .hero { flex-direction: column; text-align: center; }
+    .hero-img { max-width: 70%; margin-top: 1rem; }
+    .feature-card { max-width: calc(100% - 1rem); }
+}
+@media (max-width: 576px) {
+     nav { gap: 0.5rem 1rem; justify-content: space-around; }
+     nav a { font-size: 0.9rem; }
+    .filter-form { flex-direction: column; align-items: stretch; }
+    .filter-item { min-width: unset; }
+    .filter-actions { flex-direction: column; align-items: stretch; margin-left: 0; } /* Center buttons */
+     .filter-section button, .filter-section a.button-link { width: 100%; text-align: center; }
+    th, td { font-size: 0.8rem; padding: 0.4rem 0.5rem; }
+    .table-container { padding: 0.5rem; }
+    .hero h2 { font-size: 1.8rem; }
+    .hero p { font-size: 1rem; }
+    .hero-img { max-width: 80%; }
+    .about-neft { padding: 1rem 1.5rem; }
+    .about-neft h2 { font-size: 1.4rem; }
+    .filtered-graph-container { padding: 0.5rem; margin: 1rem auto;} /* Less padding on small screens */
 }

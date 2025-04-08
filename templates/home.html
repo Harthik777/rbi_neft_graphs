@@ -1,30 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}Home - NEFT Dashboard{% endblock %}
+{% block title %}NEFT Dashboard - Home{% endblock %}
 
 {% block content %}
+{# Welcome Section - Reuse hero styles or create new ones #}
 <section class="hero">
-    <h2>Welcome to the NEFT Dashboard!</h2>
-    <p>Explore and analyze NEFT transaction trends with our interactive graphs and data views.</p>
-    <img src="{{ url_for('static', filename='india.png') }}" alt="India Map" class="hero-img">
+    <div class="hero-content">
+        <h2>Welcome to the NEFT Data Dashboard!</h2>
+        <p>Explore National Electronic Funds Transfer trends across various banks and time periods.</p>
+        <p>Use the navigation above to view filtered data, select filters, or see graphical representations.</p>
+    </div>
+    {# Ensure india.jpg is in static folder #}
+    <img src="{{ url_for('static', filename='india.jpg') }}" alt="India Map illustrating connectivity" class="hero-img">
 </section>
 
-<section class="features">
-    <div class="feature-card">
-        <h3>Graph 1</h3>
-        <p>Visualize the monthly transaction volumes.</p>
-    </div>
-    <div class="feature-card">
-        <h3>Graph 2</h3>
-        <p>Analyze the peak transaction times.</p>
-    </div>
-    <div class="feature-card">
-        <h3>Graph 3</h3>
-        <p>Compare transaction values across regions.</p>
-    </div>
-    <div class="feature-card">
-        <h3>Graph 4</h3>
-        <p>Top 10 Banks by Amount</p>
-    </div>
+{# About NEFT Section #}
+<section class="about-neft">
+    <h2>About NEFT</h2>
+    <p>
+        National Electronic Funds Transfer (NEFT) is an India-wide electronic payment system facilitating one-to-one funds transfer. Managed by the Reserve Bank of India (RBI), it allows individuals, firms, and corporations to electronically transfer funds from any bank branch to any individual, firm, or corporation having an account with any other bank branch in the country participating in the Scheme.
+    </p>
+    <p>
+        NEFT operates in half-hourly batches throughout the day, 24x7, 365 days a year. This system is widely used for various transactions, including salary payments, loan EMIs, credit card payments, and other bill payments, offering a secure and efficient way to move money across India.
+    </p>
 </section>
+
 {% endblock %}

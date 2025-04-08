@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Select NEFT Filters{% endblock %}
+
+{% block content %}
+<section class="filter-section standalone-filters">
+    <h2>Select NEFT Filters</h2>
+    <p>Choose your filters below and click "Apply Filters" to view the corresponding data.</p>
+
+    {# Form submits GET request to the 'view_transactions' route #}
+    <form action="{{ url_for('view_transactions') }}" method="GET" class="filter-form">
+        {# Bank Filter #}
+        <div class="filter-item">
+            <label for="bank_name">Bank:</label>
+            <select name="bank_name" id="bank_name">
+                <option value="All Banks" {% if not selected_bank or selected_bank == 'All Banks' %}selected{% endif %}>All Banks</option>
+                {% for bank in all_banks %}
+                <option value="{{ bank }}" {% if selected_bank == bank %}selected{% endif %}>{{ bank }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {# Year Filter #}
+        <div class="filter-item">
+            <label for="year">Year:</label>
+            <select name="year" id="year">
+                <option value="All Years" {% if not selected_year or selected_year == 'All Years' %}selected{% endif %}>All Years</option>
+                {% for year in all_years %}
+                <option value="{{ year }}" {% if selected_year == year|string %}selected{% endif %}>{{ year }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {# Month Filter #}
+        <div class="filter-item">
+            <label for="month">Month:</label>
+            <select name="month" id="month">
+                <option value="All Months" {% if not selected_month or selected_month == 'All Months' %}selected{% endif %}>All Months</option>
+                {% for month_num, month_name in all_months.items() %}
+                <option value="{{ month_num }}" {% if selected_month == month_num|string %}selected{% endif %}>{{ month_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {# Submit Buttons #}
+        <div class="filter-actions">
+             <button type="submit">Apply Filters</button>
+             {# Link to clear filters by going to the base transactions URL #}
+             <a href="{{ url_for('view_transactions') }}" class="button-link">View Unfiltered</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}NEFT Transaction Details{% endblock %}
+
+{% block content %}
+<section class="data-viewer">
+
+    {# Display Graph IF filters are applied and graph generated #}
+    {% if filtered_graph %}
+    <div class="graph-container filtered-graph-container"> {# Optional container for styling #}
+        <h3>Graph for Filtered Data</h3> {# You can make the title more dynamic if needed #}
+        <img src="data:image/png;base64,{{ filtered_graph }}" alt="Graph based on filtered data">
+    </div>
+    {% endif %}
+    {# End Graph Display #}
+
+
+    {# Existing Table Display Section #}
+    <div class="table-container">
+         <h2>{{ "Filtered NEFT Data" if request.args else "NEFT Data (No Filters Applied)" }}</h2>
+         {# Links to navigate to filters or clear them #}
+        {% if request.args %}
+        <p>Filters Applied. <a href="{{ url_for('select_filters', **request.args) }}">Change Filters</a> | <a href="{{ url_for('view_transactions') }}">View All Data</a></p>
+        {% else %}
+        <p>Showing all data. <a href="{{ url_for('select_filters') }}">Apply Filters</a></p>
+        {% endif %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Bank Name</th> <th>Year</th> <th>Month</th>
+                    <th>Outward Count</th> <th>Outward Amount (₹)</th>
+                    <th>Inward Count</th> <th>Inward Amount (₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.bank_name }}</td> <td>{{ row.year }}</td> <td>{{ row.month | month_name }}</td>
+                    <td style="text-align: right;">{{ "{:,}".format(row.outward_count | int) }}</td>
+                    <td style="text-align: right;">{{ "{:,.2f}".format(row.outward_amount | float) }}</td>
+                    <td style="text-align: right;">{{ "{:,}".format(row.inward_count | int) }}</td>
+                    <td style="text-align: right;">{{ "{:,.2f}".format(row.inward_amount | float) }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7" style="text-align: center;">No data available{% if request.args %} for the selected filters. <a href="{{ url_for('select_filters') }}">Try different filters</a> or <a href="{{ url_for('view_transactions') }}">view all data</a>{% endif %}.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

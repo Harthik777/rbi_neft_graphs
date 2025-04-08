@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Full NEFT DataFrame{% endblock %}
+
+{% block content %}
+<section class="dataframe-viewer">
+    <h2>Full NEFT DataFrame</h2>
+    <p>This table shows the complete, unfiltered NEFT data loaded into the application.</p>
+    <div class="table-container full-dataframe-container"> {# Use existing or new container class #}
+        {% if df_html %}
+            {{ df_html | safe }} {# Use safe filter to render HTML #}
+        {% else %}
+            <p>Could not load DataFrame.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
