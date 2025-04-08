@@ -27,6 +27,3 @@ See `requirements.txt` in each project folder for dependencies.
 2. Navigate to the desired project folder (`rbi_neft_graph_pandas` or `rbi_neft_graphs_sql`).
 3. Follow the instructions in the respective folder's documentation to set up and run the project.
 
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
