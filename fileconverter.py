@@ -75,29 +75,8 @@ try:
                 df = df.iloc[row_idx+2:-2,:]
                 df = df.dropna(axis=1, how='all')
                 df.columns = neft_headers
-
-                # Assuming 'folder' variable holds the year as a string
-# Assuming 'year_data' is filename like 'January.XLS'
-            try:
-                df['Year'] = int(folder)
-                month_name = year_data.split('.')[0] # Get 'January'
-                # Convert month name to number (requires calendar import)
-                import calendar
-                month_map = {name.lower(): num for num, name in enumerate(calendar.month_name) if num}
-                df['Month'] = month_map.get(month_name.lower(), 0) # Default to 0 if not found
-            except Exception as e:
-                print(f"Error adding Year/Month columns for {year_data} in {folder}: {e}")
-                # Handle error appropriately, maybe skip the file
-                continue # Skip to next file if year/month can't be added
-
-            # Also adjust neft_headers if you want Year/Month in a specific order,
-            # although adding them at the end is fine for SQL access.
-
-
-
                 df = df.reset_index(drop=True)
 
                 df.to_sql(f"{metric}_{year}_{folder}",con=connection,if_exists="replace",index=False)
 except Exception as e:
     print(e)
-
