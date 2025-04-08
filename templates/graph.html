@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="text-align: center;">
+    {% if img_data %}
+        <img src="data:image/png;base64,{{ img_data }}" alt="Graph">
+    {% else %}
+        <p>No graph available.</p>
+    {% endif %}
+</div>
+{% endblock %}

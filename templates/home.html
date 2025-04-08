@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Home - NEFT Dashboard{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h2>Welcome to the NEFT Dashboard!</h2>
+    <p>Explore and analyze NEFT transaction trends with our interactive graphs and data views.</p>
+    <img src="{{ url_for('static', filename='india.png') }}" alt="India Map" class="hero-img">
+</section>
+
+<section class="features">
+    <div class="feature-card">
+        <h3>Graph 1</h3>
+        <p>Visualize the monthly transaction volumes.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Graph 2</h3>
+        <p>Analyze the peak transaction times.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Graph 3</h3>
+        <p>Compare transaction values across regions.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Graph 4</h3>
+        <p>Top 10 Banks by Amount</p>
+    </div>
+</section>
+{% endblock %}

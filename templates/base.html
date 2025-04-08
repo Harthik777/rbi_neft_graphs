@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NEFT Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>NEFT Dashboard</h1>
+        <nav>
+            <a href="{{ url_for('graph1') }}">Graph 1</a>
+            <a href="{{ url_for('graph2') }}">Graph 2</a>
+            <a href="{{ url_for('graph3') }}">Graph 3</a>
+            <a href="{{ url_for('graph4') }}">Graph 4</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Created by Harthik and Paranjay</p>
+    </footer>
+</body>
+</html>
